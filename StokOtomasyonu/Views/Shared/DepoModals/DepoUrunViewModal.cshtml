@@ -1,0 +1,63 @@
+﻿
+
+
+<div class="modal fade  " id="DepoUrunViewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Depo Stokları</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped mt-4">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Stok Kodu</th>
+                                <th scope="col">Stok Adeti</th>
+                                <th scope="col">İşyeri Adı</th>
+                                <th scope="col">Depo Adı</th>
+                                <th scope="col">Depo Lokasyonu</th>
+                                <th scope="col">Ürün Adı</th>
+                                <th scope="col">Ürün Seri No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-repeat="item in urunInDepo ">
+                                <th scope="row">{{$index + 1}}</th>
+                                <td>{{ item.stok_kodu }}</td>
+                                <td>{{ item.stok_adedi }}</td>
+                                <td>{{ item.isyeri_adi }}</td>
+                                <td>{{ item.depo_adi }}</td>
+                                <td>{{ item.depo_lokasyon }}</td>
+                                <td>{{ item.urun_adi }}</td>
+                                <td>{{ item.urun_seri_no }}</td>
+
+
+
+
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kapat</button>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+

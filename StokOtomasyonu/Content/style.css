@@ -1,0 +1,51 @@
+﻿
+footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+/*Notification*/
+
+.notification {
+    position: fixed;
+    width: 250px;
+    bottom: 50px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 50px;
+    background: #17a2b8;    
+    color: white;
+    line-height: 1;
+    transition: .5s;
+}
+
+    .notification i {
+        position: absolute;
+        right: 5px;
+    }
+.ntfError {
+    background: red;
+}
+
+/*Validation*/
+
+.absolute-validation {
+    position: absolute !important;
+    margin-top: -70px;
+    padding: 2px 5px;
+    margin-left: 120px;
+    font-size: 11px;
+    opacity: 0.7;
+    background: #dc3545;
+}
+    .absolute-validation::before {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 15px;
+        border-color: #dc3545 transparent transparent transparent;
+        border-style: solid;
+        border-width: 5px;
+        width: 0px;
+        height: 0px;
+    }

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StokTakipOtomasyonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Depo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="depo_adi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="depo_lokasyon" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Stok" Relationship="Self.FK_Stok_Depo" FromRole="Depo" ToRole="Stok" />
+  </EntityType>
+  <EntityType Name="Isyeri">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="isyeri_adi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Kullanici" Relationship="Self.FK_Kullanici_Isyeri" FromRole="Isyeri" ToRole="Kullanici" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_Urun_Isyeri" FromRole="Isyeri" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adi" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="soyadi" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="kullanici_adi" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="is_admin" Type="Byte" />
+    <Property Name="isyeri_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Isyeri" Relationship="Self.FK_Kullanici_Isyeri" FromRole="Kullanici" ToRole="Isyeri" />
+  </EntityType>
+  <EntityType Name="Stok">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stok_adedi" Type="Int32" />
+    <Property Name="urun_id" Type="Int32" />
+    <Property Name="depo_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="stok_kodu" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Depo" Relationship="Self.FK_Stok_Depo" FromRole="Stok" ToRole="Depo" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_Stok_Urun" FromRole="Stok" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="Urun">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urun_adi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="urun_model" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="urun_seri_no" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="urun_tarihi" Type="DateTime" Precision="3" />
+    <Property Name="urun_fiyati" Type="Double" />
+    <Property Name="isyeri_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Isyeri" Relationship="Self.FK_Urun_Isyeri" FromRole="Urun" ToRole="Isyeri" />
+    <NavigationProperty Name="Stok" Relationship="Self.FK_Stok_Urun" FromRole="Urun" ToRole="Stok" />
+  </EntityType>
+  <Association Name="FK_Stok_Depo">
+    <End Role="Depo" Type="Self.Depo" Multiplicity="0..1" />
+    <End Role="Stok" Type="Self.Stok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Depo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Stok">
+        <PropertyRef Name="depo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Isyeri">
+    <End Role="Isyeri" Type="Self.Isyeri" Multiplicity="0..1" />
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Isyeri">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Kullanici">
+        <PropertyRef Name="isyeri_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Isyeri">
+    <End Role="Isyeri" Type="Self.Isyeri" Multiplicity="0..1" />
+    <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Isyeri">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Urun">
+        <PropertyRef Name="isyeri_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stok_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+    <End Role="Stok" Type="Self.Stok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Stok">
+        <PropertyRef Name="urun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StokTakipOtomasyonuEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Depo" EntityType="Self.Depo" />
+    <EntitySet Name="Isyeri" EntityType="Self.Isyeri" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
+    <EntitySet Name="Stok" EntityType="Self.Stok" />
+    <EntitySet Name="Urun" EntityType="Self.Urun" />
+    <AssociationSet Name="FK_Stok_Depo" Association="Self.FK_Stok_Depo">
+      <End Role="Depo" EntitySet="Depo" />
+      <End Role="Stok" EntitySet="Stok" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Isyeri" Association="Self.FK_Kullanici_Isyeri">
+      <End Role="Isyeri" EntitySet="Isyeri" />
+      <End Role="Kullanici" EntitySet="Kullanici" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Isyeri" Association="Self.FK_Urun_Isyeri">
+      <End Role="Isyeri" EntitySet="Isyeri" />
+      <End Role="Urun" EntitySet="Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stok_Urun" Association="Self.FK_Stok_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="Stok" EntitySet="Stok" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

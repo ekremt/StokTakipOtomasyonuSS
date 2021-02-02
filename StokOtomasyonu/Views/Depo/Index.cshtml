@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Depo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div ng-controller="DepoController">
+    <h2 class="text-lg-center mt-4">Depolar</h2>
+    <table class="table table-striped mt-4">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Depo Adı</th>
+                <th scope="col">Depo Lokasyonu</th>
+                <th scope="col">Depodaki Ürünler</th>
+                <th scope="col">İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="item in depo ">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{ item.depo_adi.trimRight() }}</td>
+                <td>{{ item.depo_lokasyon.trimRight() }}</td>
+                <td>
+                    <button type="button" ng-click="urunlerClick(item)" class="btn btn-sm btn-group-sm btn-outline-warning col-6 offset-2 " data-toggle="modal" data-target="#DepoUrunViewModal"><i class="fas fa-tags"></i></button>
+                </td>
+
+                <td class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <button type="button" ng-click="editClick(item)" class="btn btn-sm btn-group-sm btn-outline-info " data-toggle="modal" data-target="#DepoEditModal"><i class="fas fa-edit"></i></button>
+                    <button type="button" ng-click="deleteClick(item)" class="btn btn-sm btn-group-sm btn-outline-danger " data-toggle="modal" data-target="#DepoDeleteModal"><i class="fas fa-trash"></i></button>
+                </td>
+
+
+            </tr>
+            <tr><td colspan="4"></td><td><button type="button" ng-click="addClick()" data-toggle="modal" data-target="#DepoAddModal" class="btn btn-sm btn-group-sm btn-outline-success col-lg-6 col-12"><i class="fas fa-plus"></i></button></td></tr>
+        </tbody>
+
+    </table>
+
+    @Html.Partial("DepoModals/DepoAddModal")
+    @Html.Partial("DepoModals/DepoDeleteModal")
+    @Html.Partial("DepoModals/DepoEditModal")
+    @Html.Partial("DepoModals/DepoUrunViewModal")
+    @Html.Partial("Notification")
+</div>
+<script src="~/Scripts/js/angular/DepoController.js"></script>
+

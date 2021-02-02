@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b9bbbb0e9bd4acfb1d93db539a5373d" Name="Diagram1">
+        <EntityTypeShape EntityType="StokTakipOtomasyonuModel.Depo" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StokTakipOtomasyonuModel.Isyeri" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StokTakipOtomasyonuModel.Kullanici" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StokTakipOtomasyonuModel.Stok" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StokTakipOtomasyonuModel.Urun" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="StokTakipOtomasyonuModel.FK_Stok_Depo" ManuallyRouted="false" />
+        <AssociationConnector Association="StokTakipOtomasyonuModel.FK_Kullanici_Isyeri" ManuallyRouted="false" />
+        <AssociationConnector Association="StokTakipOtomasyonuModel.FK_Urun_Isyeri" ManuallyRouted="false" />
+        <AssociationConnector Association="StokTakipOtomasyonuModel.FK_Stok_Urun" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

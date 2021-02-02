@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Isyeri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-controller="IsyeriController">
+    <h2 class="text-lg-center mt-4">İşyerleri</h2>
+    <table class="table table-striped mt-4">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">İş Yeri Adı</th>
+                <th scope="col">İşyeri Çalışanları</th>
+                <th scope="col">İşyeri Ürünleri</th>
+                <th scope="col">İşyeri Stokları</th>
+                <th scope="col">İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="item in isyeri ">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{ item.isyeri_adi }}</td>
+                <td>
+                    <button type="button" ng-click="calisanlarClick(item)" class="btn btn-sm btn-group-sm btn-outline-dark col-8 offset-2 " data-toggle="modal" data-target="#IsyeriUserViewModal"><i class="fas fa-users"></i></button>
+                </td>
+                <td>
+                    <button type="button" ng-click="urunlerClick(item)" class="btn btn-sm btn-group-sm btn-outline-warning col-8 offset-2 " data-toggle="modal" data-target="#IsyeriUrunViewModal"><i class="fas fa-tags"></i></button>
+                </td>
+                <td>
+                    <button type="button" ng-click="stoklarClick(item)" class="btn btn-sm btn-group-sm btn-outline-secondary col-8 offset-2 " data-toggle="modal" data-target="#IsyeriStokViewModal"><i class="fas fa-store-alt"></i></button>
+                </td>
+
+                <td class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <button type="button" ng-click="editClick(item)" class="btn btn-sm btn-group-sm btn-outline-info " data-toggle="modal" data-target="#IsyeriEditModal"><i class="fas fa-edit"></i></button>
+                    <button type="button" ng-click="deleteClick(item)" class="btn btn-sm btn-group-sm btn-outline-danger " data-toggle="modal" data-target="#IsyeriDeleteModal"><i class="fas fa-trash"></i></button>
+                </td>
+
+
+            </tr>
+            <tr><td colspan="5"></td><td><button type="button" ng-click="addClick()" data-toggle="modal" data-target="#IsyeriAddModal" class="btn btn-sm btn-group-sm btn-outline-success col-lg-6 col-12"><i class="fas fa-plus"></i></button></td></tr>
+        </tbody>
+
+    </table>
+
+    @Html.Partial("IsyeriModals/IsyeriAddModal")
+    @Html.Partial("IsyeriModals/IsyeriDeleteModal")
+    @Html.Partial("IsyeriModals/IsyeriEditModal")
+    @Html.Partial("IsyeriModals/IsyeriUserViewModal")
+    @Html.Partial("IsyeriModals/IsyeriUrunViewModal")
+    @Html.Partial("IsyeriModals/IsyeriStokViewModal")
+    @Html.Partial("Notification")
+</div>
+<script src="~/Scripts/js/angular/IsyeriController.js"></script>

@@ -1,0 +1,72 @@
+﻿<div class="modal fade" id="UrunEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="editForm" ng-submit="editFormSubmit(itemInEditModal)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ürün Düzenleme</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="urun_adi">Ürün Adı</label>
+                            <input name="urun_adi" type="text" ng-model="itemInEditModal.urun_adi.trimRight()" required autofocus class="form-control" id="urun_adi" placeholder="Ürün Adı">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.urun_adi.$touched && editForm.urun_adi.$error.required ">Lütfen Ürün Adı giriniz.</span>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="urun_model">Ürün Modeli</label>
+                            <input name="urun_model" type="text" ng-model="itemInEditModal.urun_model.trimRight()" required class="form-control" id="urun_model" placeholder="Ürün Modeli">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.urun_model.$touched && editForm.urun_model.$error.required ">Lütfen Ürün Modeli giriniz.</span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="urun_seri_no">Ürün Seri No</label>
+                        <input name="urun_seri_no" type="text" ng-model="itemInEditModal.urun_seri_no.trimRight()" required class="form-control" id="urun_seri_no" placeholder="Ürün Seri No">
+                        <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.urun_seri_no.$touched && editForm.urun_seri_no.$error.required ">Lütfen Ürün Seri No giriniz.</span>
+
+                    </div>
+                    <div class="form-row">
+                       
+                        <div class="form-group col-md-12">
+                            <label for="urun_fiyati">Ürün Fiyatı</label>
+                            <input name="urun_fiyati" type="text" ng-model="itemInEditModal.urun_fiyati" required class="form-control" id="urun_fiyati" placeholder="Ürün Fiyatı">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.urun_fiyati.$touched && editForm.urun_fiyati.$error.required ">Lütfen Ürün Fiyatı giriniz.</span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
+                            <label for="is_yeri">İş Yeri </label>
+                            <select name="isyeri_id" class="form-control " ng-model="itemInEditModal.isyeri_id" ng-checked="itemInEditModal.isyeri_id==isyeri.id" ng-options="isyeri.id as isyeri.isyeri_adi for isyeri in isyeriListEdit">
+
+                             </select>
+                                <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.isyeri_id.$touched && editForm.isyeri_id.$error.required ">Lütfen İş Yeri Seçiniz</span>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-outline-success">Düzenle</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+

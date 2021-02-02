@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Ürünler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div ng-controller="UrunController">
+    <h2 class="text-lg-center mt-4">Ürünler</h2>
+    <table class="table table-striped mt-4">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ürün Adı</th>
+                <th scope="col">Ürün Model</th>
+                <th scope="col">Ürün Seri No</th>
+                <th scope="col">Ürün Tarihi</th>
+                <th scope="col">Ürün Fiyatı</th>
+                <th scope="col">İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="item in urun ">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{ item.urun_adi }}</td>
+                <td>{{ item.urun_model }}</td>
+                <td>{{ item.urun_seri_no }}</td>
+                <td>{{ item.urun_tarihi.split('/')[1].split('(')[1].split(')')[0] | date:"dd.MM.y HH:mm:ss"  }} </td>
+                <td>{{ item.urun_fiyati }}</td>
+
+                <td class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <button type="button" ng-click="editClick(item)" class="btn btn-sm btn-group-sm btn-outline-info " data-toggle="modal" data-target="#UrunEditModal"><i class="fas fa-edit"></i></button>
+                    <button type="button" ng-click="deleteClick(item)" class="btn btn-sm btn-group-sm btn-outline-danger " data-toggle="modal" data-target="#UrunDeleteModal"><i class="fas fa-trash"></i></button>
+                </td>
+
+
+            </tr>
+            <tr><td colspan="6"></td><td><button type="button" ng-click="addClick()" data-toggle="modal" data-target="#UrunAddModal" class="btn btn-sm btn-group-sm btn-outline-success col-6 "><i class="fas fa-plus"></i></button></td></tr>
+        </tbody>
+    </table>
+    @Html.Partial("UrunModals/UrunEditModal")
+    @Html.Partial("UrunModals/UrunAddModal")
+    @Html.Partial("UrunModals/UrunDeleteModal")
+    @Html.Partial("Notification")
+</div>
+<script src="~/Scripts/js/angular/UrunController.js"></script>
+<script src="~/Scripts/moment.js"></script>

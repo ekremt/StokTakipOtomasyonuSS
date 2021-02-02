@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StokTakipOtomasyonuModelStoreContainer" CdmEntityContainer="StokTakipOtomasyonuEntities">
+    <EntitySetMapping Name="Depo">
+      <EntityTypeMapping TypeName="StokTakipOtomasyonuModel.Depo">
+        <MappingFragment StoreEntitySet="Depo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="depo_adi" ColumnName="depo_adi" />
+          <ScalarProperty Name="depo_lokasyon" ColumnName="depo_lokasyon" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Isyeri">
+      <EntityTypeMapping TypeName="StokTakipOtomasyonuModel.Isyeri">
+        <MappingFragment StoreEntitySet="Isyeri">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="isyeri_adi" ColumnName="isyeri_adi" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanici">
+      <EntityTypeMapping TypeName="StokTakipOtomasyonuModel.Kullanici">
+        <MappingFragment StoreEntitySet="Kullanici">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="adi" ColumnName="adi" />
+          <ScalarProperty Name="soyadi" ColumnName="soyadi" />
+          <ScalarProperty Name="kullanici_adi" ColumnName="kullanici_adi" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+          <ScalarProperty Name="isyeri_id" ColumnName="isyeri_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stok">
+      <EntityTypeMapping TypeName="StokTakipOtomasyonuModel.Stok">
+        <MappingFragment StoreEntitySet="Stok">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="stok_adedi" ColumnName="stok_adedi" />
+          <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+          <ScalarProperty Name="depo_id" ColumnName="depo_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="stok_kodu" ColumnName="stok_kodu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urun">
+      <EntityTypeMapping TypeName="StokTakipOtomasyonuModel.Urun">
+        <MappingFragment StoreEntitySet="Urun">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="urun_adi" ColumnName="urun_adi" />
+          <ScalarProperty Name="urun_model" ColumnName="urun_model" />
+          <ScalarProperty Name="urun_seri_no" ColumnName="urun_seri_no" />
+          <ScalarProperty Name="urun_tarihi" ColumnName="urun_tarihi" />
+          <ScalarProperty Name="urun_fiyati" ColumnName="urun_fiyati" />
+          <ScalarProperty Name="isyeri_id" ColumnName="isyeri_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

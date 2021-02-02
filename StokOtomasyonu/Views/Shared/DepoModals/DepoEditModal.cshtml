@@ -1,0 +1,41 @@
+﻿<div class="modal fade" id="DepoEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="editForm" ng-submit="editFormSubmit(itemInModal)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Depo Güncelleme</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="depo_adi"> Depo Adı</label>
+                            <input name="depo_adi" type="text" ng-model="itemInModal.depo_adi" required autofocus class="form-control" id="depo_adi">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.depo_adi.$touched && editForm.depo_adi.$invalid">Lütfen  Depo Adı giriniz.</span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="depo_lokasyon"> Depo Lokasyonu</label>
+                            <input name="depo_lokasyon" type="text" ng-model="itemInModal.depo_lokasyon" required class="form-control" id="depo_lokasyon">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.depo_lokasyon.$touched && editForm.depo_lokasyon.$invalid">Lütfen  Depo Lokasyonu giriniz.</span>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-outline-info">Düzenle</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

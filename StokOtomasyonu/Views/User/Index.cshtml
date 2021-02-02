@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Kullanıcılar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div ng-controller="UserController">
+    <h2 class="text-lg-center mt-4">Kullanıcılar</h2>
+    <table class="table table-striped mt-4">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Adı</th>
+                <th scope="col">Soyadı</th>
+                <th scope="col">Kullanıcı Adı</th>
+                <th scope="col">E Mail</th>
+                <th scope="col">İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="item in user ">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{ item.adi }}</td>
+                <td>{{ item.soyadi }}</td>
+                <td>{{ item.kullanici_adi }}</td>
+                <td>{{ item.email }}</td>
+
+                <td class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <button type="button" ng-click="editClick(item)" class="btn btn-sm btn-group-sm btn-outline-info " data-toggle="modal" data-target="#UserEditModal"><i class="fas fa-user-edit"></i></button>
+                    <button type="button"  ng-click="deleteClick(item)" class="btn btn-sm btn-group-sm btn-outline-danger "  data-toggle="modal" data-target="#UserDeleteModal"><i class="fas fa-user-slash"></i></button>
+                </td>
+
+
+            </tr>
+            <tr><td colspan="5"></td><td><button type="button" ng-click="addClick()" data-toggle="modal" data-target="#UserAddModal" class="btn btn-sm btn-group-sm btn-outline-success col-6 "><i class="fas fa-user-plus"></i></button></td></tr>
+        </tbody>
+    </table>
+    @Html.Partial("KullaniciModals/UserEditModal")
+    @Html.Partial("KullaniciModals/UserAddModal")
+    @Html.Partial("KullaniciModals/UserDeleteModal")
+    @Html.Partial("Notification")
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="~/Scripts/js/angular/UserController.js"></script>

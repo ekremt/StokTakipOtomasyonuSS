@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Stok";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div ng-controller="StokController">
+    <h2 class="text-lg-center mt-4">Stoklar</h2>
+    <table class="table table-striped mt-4">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Stok Kodu</th>
+                <th scope="col">Stok Adeti</th>
+                <th scope="col">İşyeri Adı</th>
+                <th scope="col">Depo Adı</th>
+                <th scope="col">Depo Lokasyonu</th>
+                <th scope="col">Ürün Adı</th>
+                <th scope="col">Ürün Seri No</th>
+                <th scope="col">İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="item in stok ">
+                <th scope="row">{{$index + 1}}</th>
+                <td>{{ item.stok_kodu }}</td>
+                <td>{{ item.stok_adedi }}</td>
+                <td>{{ item.isyeri_adi }}</td>
+                <td>{{ item.depo_adi }}</td>
+                <td>{{ item.depo_lokasyon }}</td>
+                <td>{{ item.urun_adi }}</td>
+                <td>{{ item.urun_seri_no }}</td>
+
+
+
+                <td class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <button type="button" ng-click="editClick(item)" class="btn btn-sm btn-group-sm btn-outline-info " data-toggle="modal" data-target="#StokEditModal"><i class="fas fa-edit"></i></button>
+                    <button type="button" ng-click="deleteClick(item)" class="btn btn-sm btn-group-sm btn-outline-danger " data-toggle="modal" data-target="#StokDeleteModal"><i class="fas fa-trash"></i></button>
+                </td>
+
+
+            </tr>
+            <tr><td colspan="7"></td><td><button type="button" ng-click="addClick()" data-toggle="modal" data-target="#StokAddModal" class="btn btn-sm btn-group-sm btn-outline-success col-lg-6 col-12"><i class="fas fa-plus"></i></button></td></tr>
+        </tbody>
+
+    </table>
+
+    @Html.Partial("StokModals/StokAddModal")
+    @Html.Partial("StokModals/StokDeleteModal")
+    @Html.Partial("StokModals/StokEditModal")
+    @Html.Partial("Notification")
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+<script src="~/Scripts/js/angular/StokController.js"></script>

@@ -1,0 +1,92 @@
+﻿
+<div class="modal fade" id="UserAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="addForm" ng-submit="addFormSubmit(itemInAddModal)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Kullanıcı Ekleme</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="adi">Adı</label>
+                            <input name="adi" type="text" ng-model="itemInAddModal.adi" required autofocus class="form-control" id="adi" placeholder="Adı">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.adi.$touched && addForm.adi.$error.required ">Lütfen Adı giriniz.</span>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="soyadi">Soyadı</label>
+                            <input name="soyadi" type="text" ng-model="itemInAddModal.soyadi" required class="form-control" id="soyadi" placeholder="Soyadı">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.soyadi.$touched && addForm.soyadi.$error.required ">Lütfen Soyadı giriniz.</span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="kullanici_adi">Kullanıcı Adı</label>
+                        <input name="kullanici_adi" type="text" ng-model="itemInAddModal.kullanici_adi" required class="form-control" id="kullanici_adi" placeholder="Kullanıcı Adı">
+                        <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.kullanici_adi.$touched && addForm.kullanici_adi.$error.required ">Lütfen Kullanıcı Adı giriniz.</span>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="sifre">Şifre</label>
+                            <input name="sifre" type="password" ng-model="itemInAddModal.sifre" required class="form-control" id="sifre" placeholder="Şifre">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.sifre.$touched && addForm.sifre.$error.required ">Lütfen Sifre giriniz.</span>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sifreRepeat">Şifre Tekrarı</label>
+                            <input name="sifreRepeat" type="password" ng-model="itemInAddModal.sifreRepeat" required class="form-control" id="sifreRepeat" placeholder="Şifre Tekrarı">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.sifreRepeat.$touched && addForm.sifreRepeat.$error.required ">Lütfen Sifre Tekrarı giriniz.</span>
+
+                        </div>
+                     </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input name="email" type="email" ng-model="itemInAddModal.email" required class="form-control" id="email" placeholder="E Mail">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.email.$touched && addForm.email.$error.required ">Lütfen Email giriniz.</span>
+                            <span class=" text-white rounded-pill absolute-validation"  ng-show="addForm.email.$touched && addForm.email.$error.email">Lütfen geçerli email giriniz.</span>
+
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-12">
+                                <label for="is_yeri">İş Yeri </label>
+
+                                <select name="isyeri_id" class="form-control " required ng-model="itemInAddModal.isyeri_id">
+
+                                    <option ng-repeat="isyeri in isyeriListAdd" value="{{isyeri.id}}">{{isyeri.isyeri_adi}}</option>
+
+                                </select>
+                                <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.isyeri_id.$touched && addForm.isyeri_id.$error.required ">Lütfen İş Yeri Seçiniz</span>
+
+
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" ng-checked="itemInModal.is_admin" ng-model="itemInModal.is_admin" ng-true-value="1" ng-false-value="0" type="checkbox" id="is_admin">
+                                    <label class="form-check-label" for="is_admin">
+                                        Yetki (Admin)
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kapat</button>
+                        <button type="submit" class="btn btn-outline-success" >Ekle</button>
+                    </div>
+</form>
+        </div>
+
+    </div>
+</div>

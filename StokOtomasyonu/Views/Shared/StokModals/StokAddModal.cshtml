@@ -1,0 +1,68 @@
+﻿
+
+<div class="modal fade" id="StokAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="addStokForm" ng-submit="addFormSubmit(itemInAddModal)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Stok Ekleme</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="stok_kodu">Stok Kodu</label>
+                            <input name="stok_kodu" type="text" ng-model="itemInAddModal.stok_kodu" required autofocus class="form-control" id="stok_kodu" placeholder="Stok Kodu">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addStokForm.stok_kodu.$touched && addStokForm.stok_kodu.$error.required ">Lütfen Stok Kodu giriniz.</span>
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="stok_adedi">Stok Adeti</label>
+                            <input name="stok_adedi" type="number" ng-model="itemInAddModal.stok_adedi" required class="form-control" id="stok_adedi" placeholder="Stok Adeti">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addStokForm.stok_adedi.$touched && addStokForm.stok_adedi.$error.required ">Lütfen Stok Adeti giriniz.</span>
+
+                        </div>
+                        
+                        <div class="form-group col-md-12">
+                            <label for="isyeri__id">İşyeri Seçiniz</label>
+                            <select name="isyeri__id" class="form-control " id="isyeri__id" ng-change="isyeriChange(itemInAddModal.isyeri__id)" ng-model="itemInAddModal.isyeri__id" ng-options="isyeri.id as isyeri.isyeri_adi for isyeri in isyeriList">
+                            </select>
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addStokForm.isyeri__id.$touched && addStokForm.isyeri__id.$error.required ">Lütfen İşyeri Seçiniz</span>
+
+
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="depo_id">Depo Seçiniz</label>
+                            <select name="depo_id" class="form-control " id="depo_id" ng-model="itemInAddModal.depo_id" ng-options="depo.id as depo.depo_adi for depo in depoList">
+                            </select>
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addStokForm.depo_id.$touched && addStokForm.depo_id.$error.required ">Lütfen Depo Seçiniz</span>
+
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="urun_id">Ürün Seçiniz</label>
+                            <select name="urun_id" class="form-control " id="urun_id" ng-model="itemInAddModal.urun_id" ng-options="urun.id as urun.urun_adi for urun in urunListChange">
+                            </select>
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addStokForm.urun_id.$touched && addStokForm.urun_id.$error.required ">Lütfen Ürün Seçiniz</span>
+
+
+                        </div>
+                    </div>
+                 
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-outline-success" >Ekle</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

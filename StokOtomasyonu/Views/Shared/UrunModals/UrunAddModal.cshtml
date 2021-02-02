@@ -1,0 +1,77 @@
+﻿
+
+<div class="modal fade" id="UrunAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="addForm" ng-submit="addFormSubmit(itemInAddModal)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ürün Ekleme</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="urun_adi">Ürün Adı</label>
+                            <input name="urun_adi" type="text" ng-model="itemInAddModal.urun_adi" required autofocus class="form-control" id="urun_adi" placeholder="Ürün Adı">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.urun_adi.$touched && addForm.urun_adi.$error.required ">Lütfen Ürün Adı giriniz.</span>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="urun_model">Ürün Modeli</label>
+                            <input name="urun_model" type="text" ng-model="itemInAddModal.urun_model" required class="form-control" id="urun_model" placeholder="Ürün Modeli">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.urun_model.$touched && addForm.urun_model.$error.required ">Lütfen Ürün Modeli giriniz.</span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="urun_seri_no">Ürün Seri No</label>
+                        <input name="urun_seri_no" type="text" ng-model="itemInAddModal.urun_seri_no" required class="form-control" id="urun_seri_no" placeholder="Ürün Seri No">
+                        <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.urun_seri_no.$touched && addForm.urun_seri_no.$error.required ">Lütfen Ürün Seri No giriniz.</span>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="urun_tarihi">Ürün Tarihi</label>
+                            <input name="urun_tarihi" type="datetime-local" ng-model="itemInAddModal.urun_tarihi" required class="form-control" id="urun_tarihi" placeholder="Ürün Tarihi">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.urun_tarihi.$touched && addForm.urun_tarihi.$error.required ">Lütfen Ürün Tarihi giriniz.</span>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="urun_fiyati">Ürün Fiyatı</label>
+                            <input name="urun_fiyati" type="text" ng-model="itemInAddModal.urun_fiyati" required class="form-control" id="urun_fiyati" placeholder="Ürün Fiyatı">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.urun_fiyati.$touched && addForm.urun_fiyati.$error.required ">Lütfen Ürün Fiyatı giriniz.</span>
+
+                        </div>
+                    </div>
+                   
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
+                            <label for="is_yeri">İş Yeri </label>
+
+                            <select name="isyeri_id" class="form-control " ng-model="itemInAddModal.isyeri_id" ng-checked="itemInAddModal.isyeri_id==isyeri.id" ng-options="isyeri.id as isyeri.isyeri_adi for isyeri in isyeriListAdd">
+                            </select>
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="addForm.isyeri_id.$touched && addForm.isyeri_id.$error.required ">Lütfen İş Yeri Seçiniz</span>
+
+
+                        </div>
+                       
+
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-outline-success">Ekle</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

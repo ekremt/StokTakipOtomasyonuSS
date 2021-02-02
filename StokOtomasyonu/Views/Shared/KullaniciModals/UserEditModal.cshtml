@@ -1,0 +1,100 @@
+﻿
+<div class="modal fade" id="UserEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="editForm" ng-submit="editFormSubmit(itemInModal)">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Kullanıcı Güncelleme</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="adi">Adı</label>
+                            <input name="adi" min="3" maxlength="30" type="text" ng-model="itemInModal.adi" required autofocus class="form-control" id="adi">
+                            <span  class=" text-white rounded-pill absolute-validation" ng-show="editForm.adi.$touched && editForm.adi.$invalid">Lütfen adı giriniz.</span> 
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="soyadi">Soyadi</label>
+                            <input  name="soyadi" type="text" ng-model="itemInModal.soyadi" required class="form-control" id="soyadi">
+                            <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.soyadi.$touched && editForm.soyadi.$invalid">Lütfen soyadı giriniz.</span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="kullanici_adi">Kullanıcı Adı</label>
+                        <input name="kullanici_adi" type="text" ng-model="itemInModal.kullanici_adi" required class="form-control" id="kullanici_adi" placeholder="Kullanıcı Adı">
+                        <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.kullanici_adi.$touched && editForm.kullanici_adi.$invalid ">Lütfen Kullanıcı Adı giriniz.</span>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" type="email" ng-model="itemInModal.email" required class="form-control" id="email" placeholder="E Mail">
+                        <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.email.$touched && editForm.email.$error.required ">Lütfen Kullanıcı Adı giriniz.</span>
+                        <span class=" text-white rounded-pill absolute-validation"  ng-show="editForm.email.$touched && editForm.email.$error.email">Lütfen geçerli email giriniz.</span>
+
+                    </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-12">
+                            <label for="is_yeri">İş Yeri </label>
+
+                            <div class="form-group col-md-12">
+                              
+
+                                <select class="form-control " ng-model="itemInModal.isyeri_id" ng-checked="itemInModal.isyeri_id==isyeri.id" ng-options="isyeri.id as isyeri.isyeri_adi for isyeri in isyeriList">
+
+                                   
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" ng-checked="itemInModal.is_admin" ng-model="itemInModal.is_admin"  ng-true-value="1" ng-false-value="0" type="checkbox" id="is_admin">
+                                <label class="form-check-label" for="is_admin">
+                                   Yetki (Admin)
+                                </label>
+                            </div>
+                        </div>
+                        <div style="height:30px;" class="form-group col-md-6">
+                            <button type="button" ng-show="sifreClick" ng-click="editSifreClick(itemInModal.id)" class="btn btn-sm btn-outline-info col-12"><i class="fas fa-lock mr-1"></i>Şifre Değiştir</button>
+                            <div class="input-group mb-3" ng-show="sifreInputOld">
+                                <input ng-show="false" type="text" ng-model="sifre.id" value="{{itemInModal.id}}">
+                                <input class="form-control col-12 btn-sm" ng-model="sifre.sifreOld" type="password" aria-describedby="basic-addon1" placeholder="Eski Şifre">
+                                <div class="input-group-prepend" ng-click="sifreClickOldSpan()">
+                                    <span class="input-group-text  btn btn-sm btn-outline-info " id="basic-addon1"><i class="fas fa-arrow-circle-right"></i></span>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3" ng-show="sifreInputNew">
+                                <input class="form-control col-12 btn-sm" ng-model="sifre.sifreNew" type="password" aria-describedby="basic-addon2" placeholder="Yeni Şifre">
+                                <div class="input-group-prepend" ng-click="sifreClickNewSpan()">
+                                    <span class="input-group-text  btn btn-sm btn-outline-info " id="basic-addon2"><i class="fas fa-arrow-circle-right"></i></span>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3" ng-show="sifreInputNewRepeat">
+                                <input class="form-control col-12 btn-sm" ng-model="sifre.sifreNewRepeat" type="password" aria-describedby="basic-addon3" placeholder="Yeni Şifre Tekrarı">
+                                <div class="input-group-prepend" ng-click="sifreClickNewRepeatSpan(sifre)">
+                                    <span class="input-group-text  btn btn-sm btn-outline-info " id="basic-addon3"><i class="fas fa-arrow-circle-right"></i></span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                   
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-outline-info">Düzenle</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
