@@ -27,26 +27,47 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                @if (Session["isAdmin"] != null)
+                {
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/User/Index">Kullanıcılar  <span class="sr-only">(current)</span></a>
+                    </li>
+                    }
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/Isyeri/Index">İşyerleri  <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/Urun/Index">Ürünler  <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/Depo/Index">Depolar  <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/Stok/Index">Stoklar  <span class="sr-only">(current)</span></a>
+                    </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link" href="/User/Index">Kullanıcılar  <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="/Isyeri/Index">İşyerleri  <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="/Urun/Index">Ürünler  <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="/Depo/Index">Depolar  <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="/Stok/Index">Stoklar  <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Login/Index">Giriş  <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
+
+
+                    @if (Session["UserName"] != null)
+                    {
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">   Welcome @Session["UserName"].ToString()<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Login/SignOut">Çıkış  <span class="sr-only">(current)</span></a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Login/Index">Giriş  <span class="sr-only">(current)</span></a>
+                        </li>
+                    }
+
+
+                </ul>
 
         </div>
     </nav>

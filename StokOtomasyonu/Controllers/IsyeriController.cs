@@ -15,7 +15,15 @@ namespace StokOtomasyonu.Controllers
         public ActionResult Index()
         {
 
-            return View();
+            if (Session["UserID"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                
+                return RedirectToAction("Index", "Login");
+            }
         }
         [HttpPost]
         [Route("Isyeri/Create")]
@@ -67,9 +75,29 @@ namespace StokOtomasyonu.Controllers
         [HttpGet] [Route("Isyeri/List")]
         public ActionResult List()
         {
-         
-            var dbIsyeriAdi = context.Isyeri.ToArray();
-            return Json(dbIsyeriAdi, JsonRequestBehavior.AllowGet);
+            if (Session["UserID"] != null && Session["isAdmin"] == null)
+            {
+                var sid = Convert.ToInt32(Session["UserID"]);
+                var dbIsyeriUser = from isy in context.Isyeri
+                                   join kul in context.Kullanici on isy.id equals kul.isyeri_id
+                                   where (kul.id == sid)
+                                   orderby isy.id
+                                   select isy  ;
+               
+                return Json(dbIsyeriUser, JsonRequestBehavior.AllowGet);
+            }
+           else if(Session["isAdmin"] != null && Session["UserID"] != null)
+            {
+                 var dbIsyeriAdi = context.Isyeri.ToArray();
+                return Json(dbIsyeriAdi, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return View();
+
+            }
+           
+            
         }
         [HttpPost]
         [Route("Isyeri/IsyeriUser")]

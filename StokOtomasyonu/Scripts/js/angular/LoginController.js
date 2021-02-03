@@ -7,11 +7,12 @@
         }  */
         $http({
             method: 'POST',
-            url: '/',
+            url: '/Login/Index',
             data: JSON.stringify(user), 
             headers: { 'content-type': 'application/json' }  
         }).then(function successCallback(response) {
             console.log("ok")
+            $window.location.reload();
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

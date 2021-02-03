@@ -14,20 +14,20 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="urun_adi">Ürün Adı</label>
-                            <input name="urun_adi" type="text" ng-model="itemInEditModal.urun_adi.trimRight()" required autofocus class="form-control" id="urun_adi" placeholder="Ürün Adı">
+                            <input name="urun_adi" type="text" ng-model="itemInEditModal.urun_adi" required autofocus class="form-control" id="urun_adi" placeholder="Ürün Adı">
                             <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.urun_adi.$touched && editForm.urun_adi.$error.required ">Lütfen Ürün Adı giriniz.</span>
 
                         </div>
                         <div class="form-group col-md-6">
                             <label for="urun_model">Ürün Modeli</label>
-                            <input name="urun_model" type="text" ng-model="itemInEditModal.urun_model.trimRight()" required class="form-control" id="urun_model" placeholder="Ürün Modeli">
+                            <input name="urun_model" type="text" ng-model="itemInEditModal.urun_model" required class="form-control" id="urun_model" placeholder="Ürün Modeli">
                             <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.urun_model.$touched && editForm.urun_model.$error.required ">Lütfen Ürün Modeli giriniz.</span>
 
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="urun_seri_no">Ürün Seri No</label>
-                        <input name="urun_seri_no" type="text" ng-model="itemInEditModal.urun_seri_no.trimRight()" required class="form-control" id="urun_seri_no" placeholder="Ürün Seri No">
+                        <input name="urun_seri_no" type="text" ng-model="itemInEditModal.urun_seri_no" required class="form-control" id="urun_seri_no" placeholder="Ürün Seri No">
                         <span class=" text-white rounded-pill absolute-validation" ng-show="editForm.urun_seri_no.$touched && editForm.urun_seri_no.$error.required ">Lütfen Ürün Seri No giriniz.</span>
 
                     </div>

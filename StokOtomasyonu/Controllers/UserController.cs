@@ -16,8 +16,16 @@ namespace StokOtomasyonu.Controllers
         [HttpGet] [Route("User/Index")]
         public ActionResult Index()
         {
-            
-             return View(); 
+            if (Session["isAdmin"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                ViewBag.AdminMessage="Admin olarak giriş yapınız";
+                return RedirectToAction("Index", "Login");
+            }
+           
         }
         [HttpPost] [Route("User/Create")]
         public ActionResult Create(Kullanici kullanici)

@@ -14,7 +14,15 @@ namespace StokOtomasyonu.Controllers
         public ActionResult Index()
         {
 
-            return View();
+            if (Session["UserID"] != null)
+            {
+                return View();
+            }
+            else
+            {
+
+                return RedirectToAction("Index", "Login");
+            }
         }
         [HttpPost]
         [Route("Urun/Create")]
@@ -67,8 +75,43 @@ namespace StokOtomasyonu.Controllers
         [Route("Urun/List")]
         public ActionResult List()
         {
-            var dbUrun = context.Urun.ToArray();
-            return Json(dbUrun, JsonRequestBehavior.AllowGet);
+
+            if (Session["UserID"] != null && Session["isAdmin"] == null)
+            {
+                var sid = Convert.ToInt32(Session["UserID"]);
+                var dbUrun = from kul in context.Kullanici
+                             join isyeri in context.Isyeri on kul.isyeri_id equals isyeri.id
+                             join urun in context.Urun on isyeri.id equals urun.isyeri_id
+                             where (kul.id == sid)
+                             select new
+                             {
+                                 urun.id,
+                                 urun.isyeri_id,
+                                 urun.created_at,
+                                 urun.urun_adi,
+                                 urun.urun_fiyati,
+                                 urun.urun_model,
+                                 urun.urun_seri_no,
+                                 urun.urun_tarihi
+                             };
+                var dbUrunList = dbUrun.ToList();
+                return Json(dbUrunList, JsonRequestBehavior.AllowGet);
+            }
+            else if (Session["isAdmin"] != null && Session["UserID"] != null)
+            {
+
+
+                var dbUrun = context.Urun.ToArray();
+                return Json(dbUrun, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return View();
+
+            }
+
+
+
         }
     }
 }
